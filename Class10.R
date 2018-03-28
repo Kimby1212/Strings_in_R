@@ -101,4 +101,51 @@ body = str_sub(emails, start = breaks[,2])
 
 cat(body[3])
 
-### Regular expression in R
+### Regular expressions in R
+
+#1. Create the following vector of strings in R:
+
+fruit = c("apple", "banana", "pear", "pineapple")
+
+#2. Run the following lines of code and try to understand what's happening
+
+str_detect(fruit, "a")
+#is a present in the elements in the vector. Returns true or false
+
+str_detect(fruit, "^a")
+#starts with a
+
+str_detect(fruit, "a$")
+#ends with a
+
+str_detect(fruit, "[aeiou]")
+#square brackets represent an or (a or e or i or o or u)
+
+str_detect(fruit, "[a-d]")
+#the dash represents a thru d (a or b or c or d)
+
+#3. Using regular expressions, write down a line of R code to detect which of the fruits starts with an "a"
+  #and ends with an "e". The following table might help: (see lab print out)
+
+str_detect(fruit, "^a[a-z]*e$")
+
+#another solution
+str_detect(fruit, "^a.*e$")
+#. represents any character numberical or alphabetical
+
+#4. Create a parser that detects phone numbers of this format 213 740 4826
+
+phone = c("213 740 4826", "213-740-4826", "(213) 740 4826")
+
+str_detect(phone, "[(]?[0-9]{3}[)]?[ -][0-9]{3}[ -][0-9]{4}") #called a parser
+
+#5. How are phone numbers formatted? Look at the body of messages 10 and 18 in the emails dataset.
+  #Create a parser that detects those formats of phone numbers.
+
+str_extract_all(body, "[(]?[0-9]{3}[)]?[ -][0-9]{3}[ -][0-9]{4}")
+
+#6. Create a parser that detects zip codes.
+
+
+
+
